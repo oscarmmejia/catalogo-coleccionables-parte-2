@@ -330,3 +330,40 @@ for pieza in catalog:
 for pieza in catalog:
     if pieza["status"] != "vendida":
         print(pieza["name"])
+
+# Parte 9. Manipulación de strings
+
+for pieza in catalog:
+    pieza["name"] = pieza["name"].title()
+    pieza["description"] = pieza["description"].strip()
+    if "usada" in pieza["description"].lower() or "certificada" in pieza["description"].lower():
+        print(f"{pieza['name']} contiene una de las palabras requeridas")
+
+print(
+    "ID: " + str(pieza_uno["id"]) +
+    " - Nombre: " + str(pieza_uno["name"]) +
+    " - Categoria: " + str(pieza_uno["category"]) +
+    " - Precio: " + str(pieza_uno["price"]) +
+    " - Estado: " + str(pieza_uno["status"]) +
+    " - Descripcion: " + str(pieza_uno["description"])
+)
+
+print(
+    f"ID: {pieza_uno['id']} - Nombre: {pieza_uno['name']} - Categoria: {pieza_uno['category']} - Precio: {pieza_uno['price']} - Estado: {pieza_uno['status']} - Descripcion: {pieza_uno['description']}"
+)
+
+etiquetas = input("Ingrese las etiquetas de las piezas separadas por comas: ")
+etiquetas_separadas = etiquetas.split(",")
+print(etiquetas_separadas)
+
+descripcion_modificada = pieza_uno["description"].replace("usada", "certificada")
+print(descripcion_modificada)
+
+nombre_usuario = input("Ingrese un nombre de usuario: ")
+print(nombre_usuario.strip())
+print(nombre_usuario.upper())
+print(nombre_usuario.lower())
+print(nombre_usuario.strip().title())
+
+pieza_uno["name"] = pieza_uno["name"].strip().title()
+print(pieza_uno["name"])
