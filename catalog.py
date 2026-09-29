@@ -45,3 +45,18 @@ def find_piece_by_id(catalog, id):
 
     return None
 
+def remove_piece(catalog, id):
+    if not isinstance(catalog, list):
+        raise ValueError("El catálogo debe ser una lista")
+
+    try:
+        piece = find_piece_by_id(catalog, id)
+
+        if piece is None:
+            raise ValueError("El id introducido no corresponde a ninguna pieza")
+
+        catalog.remove(piece)
+        return True
+
+    except ValueError:
+        return False
