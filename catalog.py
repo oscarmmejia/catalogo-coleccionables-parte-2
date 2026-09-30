@@ -88,3 +88,13 @@ def get_pieces_by_category(catalog, category):
             pieces_by_category.append(piece["name"])
 
     return pieces_by_category
+
+def piece_exists(catalog, id):
+    if not isinstance(catalog, list):
+        raise ValueError("El catálogo debe ser una lista")
+
+    piece = find_piece_by_id(catalog, id)
+
+    if piece is None:
+        return False
+    return True
