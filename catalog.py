@@ -98,3 +98,16 @@ def piece_exists(catalog, id):
     if piece is None:
         return False
     return True
+
+def filter_by_status(catalog, status):
+    if not isinstance(catalog, list):
+        raise ValueError("El catálogo debe ser una lista")
+
+    validate_status(status)
+
+    filtered_pieces = []
+
+    for piece in catalog:
+        if piece["status"] == status:
+            filtered_pieces.append(piece)
+    return filtered_pieces
