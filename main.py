@@ -44,3 +44,17 @@ while option != "7":
         else:
             for name in pieces:
                 print(name)
+
+    elif option == "3":
+        available_pieces = filter_by_status(catalog, "disponible")
+
+        if len(available_pieces) == 0:
+            print("No hay piezas disponibles")
+        else:
+            for piece in available_pieces:
+                print(f"{piece['id']} - {piece['name']}")
+
+    elif option == "4":
+        average_price = get_average_price(catalog)
+        print(f"El precio promedio es: {average_price}")
+
