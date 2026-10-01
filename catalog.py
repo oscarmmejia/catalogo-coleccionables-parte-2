@@ -125,3 +125,18 @@ def filter_by_min_price(catalog, min_price):
         if piece["price"] > min_price:
             filtered_pieces.append(piece)
     return filtered_pieces
+
+def get_average_price(catalog):
+    if not isinstance(catalog, list):
+        raise ValueError("El catálogo debe ser una lista")
+
+    if len(catalog) == 0:
+        return 0
+
+    total_price = 0
+
+    for piece in catalog:
+        total_price += piece["price"]
+
+    average_price = total_price / len(catalog)
+    return average_price
