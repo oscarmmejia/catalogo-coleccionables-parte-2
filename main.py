@@ -67,3 +67,12 @@ while option != "7":
             print("El ID introducido no existe")
         else:
             print(piece_searched)
+
+    elif option == "6":
+        piece_id = input("Ingrese el ID de la pieza a eliminar")
+        removal_result = remove_piece(catalog, piece_id)
+
+        if removal_result is True:
+            print("Se ha eliminado la pieza")
+        else:
+            print("No se ha podido eliminar la pieza")
