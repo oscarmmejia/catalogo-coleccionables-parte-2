@@ -58,3 +58,12 @@ while option != "7":
         average_price = get_average_price(catalog)
         print(f"El precio promedio es: {average_price}")
 
+    elif option == "5":
+
+        piece_id = input("Ingrese el ID de la pieza a buscar")
+        piece_searched = find_piece_by_id(catalog, piece_id)
+
+        if piece_searched is None:
+            print("El ID introducido no existe")
+        else:
+            print(piece_searched)
