@@ -76,3 +76,7 @@ while option != "7":
             print("Se ha eliminado la pieza")
         else:
             print("No se ha podido eliminar la pieza")
+    elif option == "7":
+        print("Gracias por usar el catálogo")
+    else:
+        print("Ha ingresado una opción invalida")
