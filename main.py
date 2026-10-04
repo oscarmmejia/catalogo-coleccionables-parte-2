@@ -27,7 +27,10 @@ while option != "7":
             id = input("Ingrese el identificador: ")
             name = input("Ingrese el nombre: ")
             category = input("Ingrese la categoría: ")
-            price = float(input("Ingrese el precio: "))
+            try:
+                price = float(input("Ingrese el precio: "))
+            except ValueError:
+                raise ValueError("El precio debe ser numérico") from None
             status = input("Ingrese el estado")
             description = input("Ingrese la descripción")
 
@@ -37,45 +40,59 @@ while option != "7":
         except ValueError as error:
             print(error)
     elif option == "2":
-        pieces = list_pieces(catalog)
+        try:
+            pieces = list_pieces(catalog)
 
-        if len(pieces) == 0:
-            print("No hay piezas en el catálogo")
-        else:
-            for name in pieces:
-                print(name)
+            if len(pieces) == 0:
+                print("No hay piezas en el catálogo")
+            else:
+                for name in pieces:
+                    print(name)
+        except ValueError as error:
+            print(error)
 
     elif option == "3":
-        available_pieces = filter_by_status(catalog, "disponible")
+        try:
+            available_pieces = filter_by_status(catalog, "disponible")
 
-        if len(available_pieces) == 0:
-            print("No hay piezas disponibles")
-        else:
-            for piece in available_pieces:
-                print(f"{piece['id']} - {piece['name']}")
+            if len(available_pieces) == 0:
+                print("No hay piezas disponibles")
+            else:
+                for piece in available_pieces:
+                    print(f"{piece['id']} - {piece['name']}")
+        except ValueError as error:
+            print(error)
 
     elif option == "4":
-        average_price = get_average_price(catalog)
-        print(f"El precio promedio es: {average_price}")
+        try:
+            average_price = get_average_price(catalog)
+            print(f"El precio promedio es: {average_price}")
+        except ValueError as error:
+            print(error)
 
     elif option == "5":
+        try:
+            piece_id = input("Ingrese el ID de la pieza a buscar: ")
+            piece_searched = find_piece_by_id(catalog, piece_id)
 
-        piece_id = input("Ingrese el ID de la pieza a buscar")
-        piece_searched = find_piece_by_id(catalog, piece_id)
-
-        if piece_searched is None:
-            print("El ID introducido no existe")
-        else:
-            print(piece_searched)
+            if piece_searched is None:
+                print("El ID introducido no existe")
+            else:
+                print(piece_searched)
+        except ValueError as error:
+            print(error)
 
     elif option == "6":
-        piece_id = input("Ingrese el ID de la pieza a eliminar")
-        removal_result = remove_piece(catalog, piece_id)
+        try:
+            piece_id = input("Ingrese el ID de la pieza a eliminar: ")
+            removal_result = remove_piece(catalog, piece_id)
 
-        if removal_result is True:
-            print("Se ha eliminado la pieza")
-        else:
-            print("No se ha podido eliminar la pieza")
+            if removal_result:
+                print("Se ha eliminado la pieza")
+            else:
+                print("No se encontró una pieza con ese ID")
+        except ValueError as error:
+            print(error)
     elif option == "7":
         print("Gracias por usar el catálogo")
     else:

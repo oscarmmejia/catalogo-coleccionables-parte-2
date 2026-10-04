@@ -126,7 +126,7 @@ git clone https://github.com/oscarmmejia/catalogo-coleccionables-parte-2.git
 2. Entrar en la carpeta del proyecto:
 
 ```bash
-cd catalogo-coleccionables
+cd catalogo-coleccionables-parte-2
 ```
 
 3. Ejecutar el programa:
@@ -180,6 +180,13 @@ Durante el desarrollo se utilizaron:
 - Módulos.
 - Git y GitHub.
 - Pruebas automatizadas con `pytest`.
+
+Para consultar el tipo de dato de una variable, se puede usar `type()`:
+
+```python
+price = 45.50
+print(type(price))  # <class 'float'>
+```
 
 ## Autor
 

@@ -22,6 +22,12 @@ def test_validate_not_empty_with_spaces():
         validate_not_empty("     ", "name")
 
 
+@pytest.mark.parametrize("value", [None, 123])
+def test_validate_not_empty_with_non_string_value(value):
+    with pytest.raises(ValueError, match="debe ser texto"):
+        validate_not_empty(value, "name")
+
+
 def test_validate_price_with_valid_integer():
     validate_price(50)
 
@@ -73,3 +79,9 @@ def test_validate_description_with_certified():
 def test_validate_description_invalid():
     with pytest.raises(ValueError):
         validate_description("Figura en buen estado")
+
+
+@pytest.mark.parametrize("description", [None, 123])
+def test_validate_description_with_non_string_value(description):
+    with pytest.raises(ValueError, match="debe ser texto"):
+        validate_description(description)
